@@ -5,15 +5,12 @@ class Stack:
 
 # isEmpty - проверка стека на пустоту. Метод возвращает True или False.
     def isEmpty(self):
-        if len(self.list_of_stek) == 0:
-            aaa = True
-        else:
-            aaa = False
-        return aaa
+        return len(self.list_of_stek) == 0
 
 # push - добавляет новый элемент на вершину стека. Метод ничего не возвращает.
     def push(self):
-        new_element = input('ведите новый элемент')
+        # new_element = input('ведите новый элемент')
+        # self.list_of_stek.insert(0, new_element)
         self.list_of_stek.insert(0, new_element)
 
 # pop - удаляет верхний элемент стека. Стек изменяется. Метод возвращает верхний элемент стека
@@ -30,16 +27,16 @@ class Stack:
     def size(self):
         return len(self.list_of_stek)
 
-    # Для стека из задания 1 проверка сбалансированности скобок.
+
     def checing_brackets(self):
         st_brackets = []
-        for i in range(new_stack.size()):
-            if self.list_of_stek[i] == '(' or self.list_of_stek[i] == '{' or self.list_of_stek[i] == '[':
-                st_brackets.append(self.list_of_stek[i])
+        for i in self.list_of_stek:
+            if i == '(' or i == '{' or i == '[':
+                st_brackets.append(i)
                 continue
-            if (self.list_of_stek[i] == ')' or self.list_of_stek[i] == '}' or self.list_of_stek[i] == ']') and st_brackets:
-                if (st_brackets[-1]+self.list_of_stek[i] == '()') or (st_brackets[-1]+self.list_of_stek[i] == '{}') \
-                        or (st_brackets[-1]+self.list_of_stek[i] == '[]'):
+            if (i == ')' or i == '}' or i == ']') and st_brackets:
+                if (st_brackets[-1] + i == '()') or (st_brackets[-1] + i == '{}') \
+                        or (st_brackets[-1] + i == '[]'):
                     st_brackets.pop()
                 else:
                     return 'no'
@@ -54,15 +51,19 @@ class Stack:
 
 
 
+
+
 if __name__ == '__main__':
-    start_string = input("Виудите начальную строку")
+    start_string = input("Ввидите начальную строку")
     list_for_test = start_string.split()
     new_stack = Stack(list_for_test)
     if new_stack.isEmpty():
         print("список пуст")
         quantity = int(input("введите количествоэлеметов"))
         for element in range(quantity):
-            new_stack.push()
+            #new_stack.push()
+            new_element = input('ведите новый элемент')
+            new_stack.push(new_element)
     else:
         print("список имеет значения")
 
